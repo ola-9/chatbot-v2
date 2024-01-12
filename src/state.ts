@@ -20,7 +20,7 @@ const state = [
     message: 'we are on left btn',
     buttons: [
       {
-        text: 'Начать',
+        text: 'Новый вопрос',
         next_state_id: 'next',
       },
       {
@@ -34,7 +34,7 @@ const state = [
     message: 'we are on right btn',
     buttons: [
       {
-        text: 'Начать',
+        text: 'Новый вопрос',
         next_state_id: 'next',
       },
       {
@@ -43,6 +43,16 @@ const state = [
       },
     ],
   },
+  {
+    id: 'next',
+    message: 'this is final step',
+    buttons: [
+      {
+        text: 'Начать',
+        next_state_id: 'welcome',
+      },
+    ]
+  }
 ];
 
 export default state;
