@@ -1,22 +1,34 @@
 import { useState } from 'react';
 import state from './state';
 
+interface button {
+  text: string,
+  next_state_id: string,
+  type: string,
+}
+interface state {
+  id: string,
+  message: string,
+  buttons:button[]
+}
 
 function App() {
   
   const start = state.find((item) => {
     return item.id === 'welcome'
   });
+
   const [currState, setCurrState] = useState(start);
   const [messages, setMessages] = useState([start?.message])
 
 
-  const handleClick = (nextState) => {
-    // console.log(nextState);
+  const handleClick = (nextState: string) => {
     const res = state.find((item) => item.id === nextState);
-    setMessages([...messages, res?.message]);
-    // console.log(res);
-    setCurrState(res);
+
+    if (res) {
+      setMessages([...messages, res.message]);
+      setCurrState(res);
+    }
   }
 
   return (
